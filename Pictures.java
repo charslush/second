@@ -21,7 +21,7 @@ public class Pictures extends Copy{
 		String name = url.substring(slashPos);
 		int dotPos = url.lastIndexOf(".");
 		String ext = url.substring(dotPos);
-		String adress = "/home/"+name+ext;
+		String adress = "/home/pic"+name+ext;
 		URL website = new URL(url);
 	    ReadableByteChannel rbc = Channels.newChannel(website.openStream());
 	    FileOutputStream fos = new FileOutputStream(adress);

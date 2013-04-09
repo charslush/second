@@ -20,7 +20,7 @@ public class Text extends Copy {
 		String name = url.substring(slashPos);
 		int dotPos = url.lastIndexOf(".");
 		String ext = url.substring(dotPos);
-		String adress = "/home/"+name+ext;
+		String adress = "/home/txt"+name+ext;
 		URL website = new URL(url);
 	    ReadableByteChannel rbc = Channels.newChannel(website.openStream());
 	    FileOutputStream fos = new FileOutputStream(adress);

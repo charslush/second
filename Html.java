@@ -20,7 +20,7 @@ public class Html extends Copy {
 		String name = url.substring(slashPos);
 		int dotPos = url.lastIndexOf(".");
 		String ext = url.substring(dotPos);
-		String adress = "/home/"+name;
+		String adress = "/home/html"+name;
 		URL website = new URL(url);
 	    ReadableByteChannel rbc = Channels.newChannel(website.openStream());
 	    FileOutputStream fos = new FileOutputStream(adress);
