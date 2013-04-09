@@ -38,6 +38,11 @@ public static void main(String[] args) throws IOException {
 			txt.open();
 			
 		}
+        else{
+			Copy thing = new Thing(enterString);
+			txt.open();
+			
+		}
 		
 		
 		
