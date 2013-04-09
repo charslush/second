@@ -6,7 +6,7 @@ import java.nio.channels.ReadableByteChannel;
 
 
 public class Thing extends Copy {
-	Text(String enterURL) throws IOException{
+	Thing(String enterURL) throws IOException{
 		super(enterURL);
 		
 		System.out.println("thing create");
@@ -20,7 +20,7 @@ public class Thing extends Copy {
 		String name = url.substring(slashPos);
 		int dotPos = url.lastIndexOf(".");
 		String ext = url.substring(dotPos);
-		String adress = "/home/thing"+name+ext;
+		String adress = "~/thing"+name+ext;
 		URL website = new URL(url);
 	    ReadableByteChannel rbc = Channels.newChannel(website.openStream());
 	    FileOutputStream fos = new FileOutputStream(adress);

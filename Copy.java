@@ -40,7 +40,7 @@ public static void main(String[] args) throws IOException {
 		}
         else{
 			Copy thing = new Thing(enterString);
-			txt.open();
+			thing.open();
 			
 		}
 		
