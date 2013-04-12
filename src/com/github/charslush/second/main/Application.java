@@ -31,9 +31,10 @@ public final class Application {
             } else {
                 note = new Thing(enterString);
             }
-            if (note != null) {
-                note.open();
-            }
+        }
+
+        if (note != null) {
+            note.open();
         }
     }
 }
