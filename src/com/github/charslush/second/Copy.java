@@ -1,6 +1,7 @@
 package com.github.charslush.second;
 
 import com.github.charslush.second.consts.Constants;
+import com.github.charslush.second.util.FileUtil;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -10,23 +11,20 @@ import java.nio.channels.ReadableByteChannel;
 
 public abstract class Copy {
 
-    private final String ext;
     private final String type;
     protected String url;
+    protected String name;
+    protected String ext;
     protected int count;
 
-    public Copy(String ext, String type, String url) {
-        this.ext = ext;
+    public Copy(String type, String url) {
         this.type = type;
         this.url = url;
         this.count++;
+        processUrl();
     }
 
     public void save() throws IOException {
-        int slashPos = url.lastIndexOf(Constants.SLASH);
-        String name = url.substring(slashPos);
-        int dotPos = url.lastIndexOf(Constants.DOT);
-        String ext = url.substring(dotPos);
         String adress = Constants.DESTINATION_DIR + type + name;
         URL website = new URL(url);
         ReadableByteChannel rbc = Channels.newChannel(website.openStream());
@@ -35,4 +33,9 @@ public abstract class Copy {
     }
 
     public abstract void open() throws IOException;
+
+    private void processUrl() {
+        name = FileUtil.extractName(url);
+        ext = FileUtil.extractExt(url);
+    }
 }
