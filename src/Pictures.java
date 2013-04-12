@@ -9,10 +9,7 @@ public class Pictures extends Copy {
 
     Pictures(String enterURL) throws IOException {
         super(enterURL);
-
         System.out.println("pic create");
-
-
     }
 
     public void save() throws IOException {
@@ -25,12 +22,8 @@ public class Pictures extends Copy {
         ReadableByteChannel rbc = Channels.newChannel(website.openStream());
         FileOutputStream fos = new FileOutputStream(adress);
         fos.getChannel().transferFrom(rbc, 0, 1 << 24);
-
     }
 
     public void open() throws IOException {
     }
-
-    ;
-};
-
+}

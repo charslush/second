@@ -1,6 +1,7 @@
 import java.io.IOException;
 
 abstract public class Copy {
+
     String url;
     int count;
 
@@ -10,13 +11,9 @@ abstract public class Copy {
         this.count++;
     }
 
-    ;
-
-
     abstract public void save() throws IOException;
 
     abstract public void open() throws IOException;
-
 
     public static void main(String[] args) throws IOException {
         if (args.length > 0) {
@@ -26,8 +23,6 @@ abstract public class Copy {
             if (ext == "jpg") {
                 Copy pic = new Pictures(enterString);
                 pic.open();
-
-
             }
             if (ext == "html") {
                 Copy html = new Html(enterString);
@@ -37,16 +32,10 @@ abstract public class Copy {
             if (ext == "txt") {
                 Copy txt = new Text(enterString);
                 txt.open();
-
             } else {
                 Copy thing = new Thing(enterString);
                 thing.open();
-
             }
-
-
         }
-
-
     }
 }

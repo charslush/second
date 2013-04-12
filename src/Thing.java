@@ -6,12 +6,10 @@ import java.nio.channels.ReadableByteChannel;
 
 
 public class Thing extends Copy {
+
     Thing(String enterURL) throws IOException {
         super(enterURL);
-
         System.out.println("thing create");
-
-
     }
 
     public void save() throws IOException {
@@ -24,11 +22,8 @@ public class Thing extends Copy {
         ReadableByteChannel rbc = Channels.newChannel(website.openStream());
         FileOutputStream fos = new FileOutputStream(adress);
         fos.getChannel().transferFrom(rbc, 0, 1 << 24);
-
     }
 
     public void open() throws IOException {
     }
-
-    ;
 }
