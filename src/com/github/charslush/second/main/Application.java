@@ -8,7 +8,7 @@ import com.github.charslush.second.Thing;
 
 import java.io.IOException;
 
-public class Application {
+public final class Application {
 
     private static final String JPG = "jpg";
     private static final String HTML = "html";
@@ -16,27 +16,23 @@ public class Application {
     private static final String DOT = ".";
 
     public static void main(String[] args) throws IOException {
-        Copy copyObject = new Html("");
+        Copy note = null;
 
         if (args.length > 0) {
             String enterString = args[0];
             int dotPos = enterString.lastIndexOf(DOT);
             String ext = enterString.substring(dotPos);
-            if (ext.equals(JPG)) {
-                Copy pic = new Pictures(enterString);
-                pic.open();
-            }
-            if (ext.equals(HTML)) {
-                Copy html = new Html(enterString);
-                html.open();
-            }
-
-            if (ext.equals(TXT)) {
-                Copy txt = new Text(enterString);
-                txt.open();
+            if (JPG.equals(ext)) {
+                note = new Pictures(enterString);
+            } else if (HTML.equals(ext)) {
+                note = new Html(enterString);
+            } else if (TXT.equals(ext)) {
+                note = new Text(enterString);
             } else {
-                Copy thing = new Thing(enterString);
-                thing.open();
+                note = new Thing(enterString);
+            }
+            if (note != null) {
+                note.open();
             }
         }
     }
