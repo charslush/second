@@ -1,4 +1,4 @@
-package com.github.charslush;
+package com.github.charslush.second;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -7,11 +7,11 @@ import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 
 
-public class Pictures extends Copy {
+public class Html extends Copy {
 
-    Pictures(String enterURL) throws IOException {
-        super(enterURL);
-        System.out.println("pic create");
+    public Html(String url) {
+        super(url);
+        System.out.println("html created");
     }
 
     public void save() throws IOException {
@@ -19,7 +19,7 @@ public class Pictures extends Copy {
         String name = url.substring(slashPos);
         int dotPos = url.lastIndexOf(".");
         String ext = url.substring(dotPos);
-        String adress = "~/pic" + name + ext;
+        String adress = "~/html" + name;
         URL website = new URL(url);
         ReadableByteChannel rbc = Channels.newChannel(website.openStream());
         FileOutputStream fos = new FileOutputStream(adress);

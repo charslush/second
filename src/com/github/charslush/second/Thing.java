@@ -1,4 +1,4 @@
-package com.github.charslush;
+package com.github.charslush.second;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -9,9 +9,9 @@ import java.nio.channels.ReadableByteChannel;
 
 public class Thing extends Copy {
 
-    Thing(String enterURL) throws IOException {
-        super(enterURL);
-        System.out.println("thing create");
+    public Thing(String url) {
+        super(url);
+        System.out.println("Thing created");
     }
 
     public void save() throws IOException {

@@ -1,23 +1,18 @@
-package com.github.charslush;
+package com.github.charslush.second.main;
+
+import com.github.charslush.second.Copy;
+import com.github.charslush.second.Html;
+import com.github.charslush.second.Pictures;
+import com.github.charslush.second.Text;
+import com.github.charslush.second.Thing;
 
 import java.io.IOException;
 
-public abstract class Copy {
-
-    protected String url;
-    protected int count;
-
-    public Copy(String url) throws IOException {
-        this.url = url;
-        this.save();
-        this.count++;
-    }
-
-    abstract public void save() throws IOException;
-
-    abstract public void open() throws IOException;
+public class Application {
 
     public static void main(String[] args) throws IOException {
+        Copy copyObject = new Html("");
+
         if (args.length > 0) {
             String enterString = args[0];
             int dotPos = enterString.lastIndexOf(".");
@@ -40,4 +35,5 @@ public abstract class Copy {
             }
         }
     }
+
 }
