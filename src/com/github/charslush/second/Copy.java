@@ -11,11 +11,13 @@ public abstract class Copy {
     private static final String SLASH = "/";
     private static final String DOT = ".";
     private static final String EXT = "";
+    private final String type;
 
     protected String url;
     protected int count;
 
-    public Copy(String url) {
+    public Copy(String type, String url) {
+        this.type = type;
         this.url = url;
         this.count++;
     }
@@ -25,7 +27,7 @@ public abstract class Copy {
         String name = url.substring(slashPos);
         int dotPos = url.lastIndexOf(DOT);
         String ext = url.substring(dotPos);
-        String adress = "~/html" + name;
+        String adress = "~/" + type + name;
         URL website = new URL(url);
         ReadableByteChannel rbc = Channels.newChannel(website.openStream());
         FileOutputStream fos = new FileOutputStream(adress);

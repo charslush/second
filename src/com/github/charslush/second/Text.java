@@ -9,8 +9,10 @@ import java.nio.channels.ReadableByteChannel;
 
 public class Text extends Copy {
 
+    private static final String TYPE = "txt";
+
     public Text(String url) {
-        super(url);
+        super(TYPE, url);
         System.out.println("Text created");
     }
 
