@@ -11,21 +11,22 @@ import java.nio.channels.ReadableByteChannel;
 
 public abstract class Copy {
 
-    private final String type;
-    protected String url;
-    protected String name;
-    protected String ext;
+    protected final String url;
+    protected final String name;
+    protected final String ext;
     protected int count;
+    private final String type;
 
     public Copy(String type, String url) {
         this.type = type;
         this.url = url;
         this.count++;
-        processUrl();
+        this.name = FileUtil.extractName(url);
+        this.ext = FileUtil.extractExt(url);
     }
 
     public void save() throws IOException {
-        String adress = Constants.DESTINATION_DIR + type + name;
+        String adress = Constants.DESTINATION_DIR + Constants.SLASH + type + Constants.SLASH + name;
         URL website = new URL(url);
         ReadableByteChannel rbc = Channels.newChannel(website.openStream());
         FileOutputStream fos = new FileOutputStream(adress);
@@ -33,9 +34,4 @@ public abstract class Copy {
     }
 
     public abstract void open() throws IOException;
-
-    private void processUrl() {
-        name = FileUtil.extractName(url);
-        ext = FileUtil.extractExt(url);
-    }
 }
