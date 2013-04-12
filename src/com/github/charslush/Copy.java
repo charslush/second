@@ -1,3 +1,5 @@
+package com.github.charslush;
+
 import java.io.IOException;
 
 abstract public class Copy {
