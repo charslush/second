@@ -17,16 +17,16 @@ public class Application {
             String enterString = args[0];
             int dotPos = enterString.lastIndexOf(".");
             String ext = enterString.substring(dotPos);
-            if (ext == "jpg") {
+            if (ext.equals("jpg")) {
                 Copy pic = new Pictures(enterString);
                 pic.open();
             }
-            if (ext == "html") {
+            if (ext.equals("html")) {
                 Copy html = new Html(enterString);
                 html.open();
             }
 
-            if (ext == "txt") {
+            if (ext.equals("txt")) {
                 Copy txt = new Text(enterString);
                 txt.open();
             } else {
