@@ -5,6 +5,7 @@ import com.github.charslush.second.util.FileUtil;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
@@ -27,11 +28,25 @@ public abstract class Copy {
 
     public void save() throws IOException {
         String adress = Constants.DESTINATION_DIR + Constants.SLASH + type + Constants.SLASH + name;
-        URL website = new URL(url);
-        ReadableByteChannel rbc = Channels.newChannel(website.openStream());
         FileOutputStream fos = new FileOutputStream(adress);
-        fos.getChannel().transferFrom(rbc, 0, 1 << 24);
+        fos.getChannel().transferFrom(open(), 0, 1 << 24);
     }
 
-    public abstract void open() throws IOException;
+    public ReadableByteChannel open() {
+        ReadableByteChannel toReturn = null;
+        URL url1 = null;
+        try {
+            url1 = new URL(url);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        if (url1 != null) {
+            try {
+                toReturn = Channels.newChannel(url1.openStream());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return toReturn;
+    }
 }
