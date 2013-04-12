@@ -2,13 +2,13 @@ package com.github.charslush;
 
 import java.io.IOException;
 
-abstract public class Copy {
+public abstract class Copy {
 
-    String url;
-    int count;
+    protected String url;
+    protected int count;
 
-    Copy(String enterURL) throws IOException {
-        url = enterURL;
+    public Copy(String url) throws IOException {
+        this.url = url;
         this.save();
         this.count++;
     }
